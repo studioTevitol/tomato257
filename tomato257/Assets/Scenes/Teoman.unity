@@ -300,9 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5feba7ba7a988148686e43c15df777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkType1: {fileID: 1981791219469001390, guid: 1ec11e699da7f867687e12648fb40964, type: 3}
+  chunkType:
+  - {fileID: 1981791219469001390, guid: 1ec11e699da7f867687e12648fb40964, type: 3}
   Ball: {fileID: 222900088}
-  offsetY: -50
+  offsetX: 0
+  offsetY: -27.95
   offsetZ: 60
   offsetDespawn: 50
   initialCount: 3

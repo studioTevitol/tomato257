@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class ChunkManagerScript : MonoBehaviour{
-    public GameObject chunkType1;
+    public List<GameObject> chunkType = new List<GameObject>();
+    private static readonly Random rnd=new Random();
     public GameObject Ball;
+    public float offsetX=0.0f;
     public float offsetY=-50.0f;
     public float offsetZ=95.0f;
     private int chunkCount=0;
@@ -34,14 +38,19 @@ public class ChunkManagerScript : MonoBehaviour{
     }
 
     void SpawnObject(){
-        float chunkX=0;
+        float chunkX=chunkCount*offsetX;
         float chunkY=chunkCount*offsetY;
         float chunkZ=chunkCount*offsetZ;
         Vector3 chunkPos=new Vector3(chunkX,chunkY,chunkZ);
         Quaternion chunkRot = Quaternion.Euler(0,0,0);
 
-        GameObject newChunk = Instantiate(chunkType1, chunkPos, chunkRot);
+        GameObject newChunk = Instantiate(ChooseChunk(), chunkPos, chunkRot);
         chunkQueue.Enqueue(newChunk);
         chunkCount++;
+    }
+
+    GameObject ChooseChunk(){
+        int a=rnd.Next(chunkType.Capacity);
+        return chunkType[a];
     }
 }
